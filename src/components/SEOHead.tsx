@@ -40,7 +40,7 @@ const SEOHead: React.FC = () => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://gorewaypharmacy.ca/#business",
+    "@id": "https://maltonpharmacy.ca/#business",
     "name": "Goreway Medical Pharmacy",
     "address": {
       "@type": "PostalAddress",
@@ -51,7 +51,7 @@ const SEOHead: React.FC = () => {
       "addressCountry": "CA"
     },
     "telephone": "+19056713784",
-    "url": "https://gorewaypharmacy.ca",
+    "url": "https://maltonpharmacy.ca",
     "openingHours": [
       "Su 10:00-14:00",
       "Mo 09:30-19:00",
@@ -62,7 +62,7 @@ const SEOHead: React.FC = () => {
       "Sa 09:00-15:00"
     ],
     "priceRange": "$$",
-    "image": "https://gorewaypharmacy.ca/images/goreway.png",
+    "image": "https://maltonpharmacy.ca/images/goreway.png",
     "geo": {
       "@type": "GeoCoordinates",
       "latitude": 43.71988757097855,
@@ -80,12 +80,12 @@ const SEOHead: React.FC = () => {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={`https://gorewaypharmacy.ca${location.pathname}`} />
+      <meta property="og:url" content={`https://maltonpharmacy.ca${location.pathname}`} />
       <meta property="og:locale" content="en_CA" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <link rel="canonical" href={`https://gorewaypharmacy.ca${location.pathname}`} />
+      <link rel="canonical" href={`https://maltonpharmacy.ca${location.pathname}`} />
       <script type="application/ld+json">
         {JSON.stringify(structuredData)}
       </script>
