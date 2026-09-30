@@ -10,6 +10,7 @@ const Header: React.FC = () => {
   const pharmacyName = isMaltonDomain ? 'Malton Pharmacy' : 'Goreway Medical Pharmacy';
   const pharmacyAddress = isMaltonDomain ? '6870 Goreway Dr, Mississauga, ON' : '7330 Goreway Dr, Mississauga, ON';
   const pharmacyPhone = isMaltonDomain ? '+1 (905) 678-6870' : '+1 (905) 671-3784';
+  console.log('Is this malton site? ', isMaltonDomain);
 
   const navigation = [
     { name: 'Home', href: '/' },
