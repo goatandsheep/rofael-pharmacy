@@ -7,6 +7,7 @@ const Footer: React.FC = () => {
   const pharmacyPostal = isMaltonDomain ? 'L4V 1P1' : 'L4T 4J2';
   const pharmacyPhone = isMaltonDomain ? '+1 (905) 678-6870' : '+1 (905) 671-3784';
   const pharmacyPhoneCompact = isMaltonDomain ? '+19056786870' : '+19056713784';
+  const pharmacyMapLink = isMaltonDomain ? 'https://maps.app.goo.gl/LLk9hmoM38muKtzYA' : 'https://maps.app.goo.gl/Ru8ESUU62a1vQzrj6';
   const currentYear = new Date().getFullYear();
 
   const regularHoursMalton = [
@@ -81,7 +82,7 @@ const Footer: React.FC = () => {
               <a href="/pickup-form" className="block text-gray-300 hover:text-orange-400 transition-colors duration-200">
                 Medication Pickup Form
               </a>
-              <a href="https://maps.app.goo.gl/Ru8ESUU62a1vQzrj6" target="_blank" rel="noopener noreferrer" className="block text-gray-300 hover:text-orange-400 transition-colors duration-200">
+              <a href={pharmacyMapLink} target="_blank" rel="noopener noreferrer" className="block text-gray-300 hover:text-orange-400 transition-colors duration-200">
                 Get Directions
               </a>
             </div>
@@ -91,7 +92,7 @@ const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 mt-8 pt-8 text-center space-y-4">
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-8 text-sm text-gray-400">
-            <p>&copy; {currentYear} Goreway Medical Pharmacy. All rights reserved.</p>
+            <p>&copy; {currentYear} Rofael Group. All rights reserved.</p>
             <p className="flex items-center space-x-1">
               <span>Website designed with</span>
               <Heart className="h-4 w-4 text-red-500" />
