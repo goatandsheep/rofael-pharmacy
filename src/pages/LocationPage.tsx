@@ -8,6 +8,7 @@ const LocationPage: React.FC = () => {
   const pharmacyPhone = isMaltonDomain ? '+1 (905) 678-6870' : '+1 (905) 671-3784';
   const pharmacyPhoneCompact = isMaltonDomain ? '+19056786870' : '+19056713784';
   const pharmacyMapLink = isMaltonDomain ? 'https://maps.app.goo.gl/LLk9hmoM38muKtzYA' : 'https://maps.app.goo.gl/Ru8ESUU62a1vQzrj6';
+  const pharmacyMapEmbed = isMaltonDomain ? 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12720.24113035276!2d-79.6445294!3d43.7218761!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b3be820d9b319%3A0x16fc8ab53160aa97!2sMalton%20Medical%20Pharmacy!5e1!3m2!1sen!2sca!4v1790790480386!5m2!1sen!2sca' : 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2883.550600586127!2d-79.6434306877561!3d43.71988757097855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b3bf2b9d3232b%3A0x5ddc3f77687e2178!2sGoreway%20Medical%20Pharmacy!5e0!3m2!1sen!2s!4v1753828453040!5m2!1sen!2s';
   const currentYear = new Date().getFullYear();
 
   const regularHoursMalton = [
@@ -146,7 +147,7 @@ const LocationPage: React.FC = () => {
               </div>
               <div className="relative">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2883.550600586127!2d-79.6434306877561!3d43.71988757097855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b3bf2b9d3232b%3A0x5ddc3f77687e2178!2sGoreway%20Medical%20Pharmacy!5e0!3m2!1sen!2s!4v1753828453040!5m2!1sen!2s"
+                  src={pharmacyMapEmbed}
                   width="100%"
                   height="450"
                   style={{ border: 0 }}
