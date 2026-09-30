@@ -2,6 +2,12 @@ import React from 'react';
 import { MapPin, Clock, Phone, Calendar, ExternalLink } from 'lucide-react';
 
 const LocationPage: React.FC = () => {
+    const isMaltonDomain = window.location.hostname.replace(/^www\./, '') === 'maltonpharmacy.ca';
+    const pharmacyAddress = isMaltonDomain ? '6870 Goreway Dr' : '7330 Goreway Dr';
+    const pharmacyPostal = isMaltonDomain ? 'L4V 1P1' : 'L4T 4J2';
+    const pharmacyPhone = isMaltonDomain ? '+1 (905) 678-6870' : '+1 (905) 671-3784';
+    const pharmacyPhoneCompact = isMaltonDomain ? '+19056786870' : '+19056713784';
+
   const regularHours = [
     { day: 'Sunday', hours: '10:00 AM - 2:00 PM' },
     { day: 'Monday', hours: '9:30 AM - 7:00 PM' },
@@ -55,8 +61,8 @@ const LocationPage: React.FC = () => {
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900 mb-2">Our Address</h2>
                   <div className="text-gray-600 space-y-1">
-                    <p className="text-lg font-medium">7330 Goreway Dr</p>
-                    <p>Mississauga, ON L4T 4J2</p>
+                    <p className="text-lg font-medium">{pharmacyAddress}</p>
+                    <p>Mississauga, ON {pharmacyPostal}</p>
                     <p>Canada</p>
                   </div>
                 </div>
@@ -73,7 +79,7 @@ const LocationPage: React.FC = () => {
                   <ExternalLink className="h-4 w-4" />
                 </a>
                 <a
-                  href="tel:+19056713784"
+                  href={`tel:${pharmacyPhoneCompact}`}
                   className="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-blue-600 hover:text-white hover:shadow-lg transform hover:-translate-y-1 flex items-center justify-center space-x-2"
                 >
                   <Phone className="h-4 w-4" />
@@ -90,8 +96,8 @@ const LocationPage: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-1">Phone</h3>
-                  <a href="tel:+19056713784" className="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors duration-200">
-                    +1 (905) 671-3784
+                  <a href={`tel:${pharmacyPhoneCompact}`} className="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors duration-200">
+                    {pharmacyPhone}
                   </a>
                 </div>
               </div>

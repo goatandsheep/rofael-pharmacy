@@ -5,6 +5,11 @@ import { Menu, X, Phone, MapPin } from 'lucide-react';
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const isMaltonDomain = window.location.hostname.replace(/^www\./, '') === 'maltonpharmacy.ca';
+  const logoFile = isMaltonDomain ? 'malton.png' : 'goreway.png';
+  const pharmacyName = isMaltonDomain ? 'Malton Pharmacy' : 'Goreway Medical Pharmacy';
+  const pharmacyAddress = isMaltonDomain ? '6870 Goreway Dr, Mississauga, ON' : '7330 Goreway Dr, Mississauga, ON';
+  const pharmacyPhone = isMaltonDomain ? '+1 (905) 678-6870' : '+1 (905) 671-3784';
 
   const navigation = [
     { name: 'Home', href: '/' },
@@ -21,11 +26,11 @@ const Header: React.FC = () => {
         <div className="container mx-auto px-4 flex justify-center items-center space-x-6 text-sm">
           <div className="flex items-center space-x-2">
             <Phone className="h-4 w-4" />
-            <span className="font-medium">+1 (905) 671-3784</span>
+            <span className="font-medium">{pharmacyPhone}</span>
           </div>
           <div className="hidden sm:flex items-center space-x-2">
             <MapPin className="h-4 w-4" />
-            <span>7330 Goreway Dr, Mississauga, ON</span>
+            <span>{pharmacyAddress}</span>
           </div>
         </div>
       </div>
@@ -36,8 +41,8 @@ const Header: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex-shrink-0">
             <img
-              src={`${import.meta.env.BASE_URL}images/goreway.png`}
-              alt="Goreway Medical Pharmacy"
+              src={`${import.meta.env.BASE_URL}images/${logoFile}`}
+              alt={pharmacyName}
               className="h-12 w-auto transition-transform duration-200 hover:scale-105"
               width="266"
               height="89"
