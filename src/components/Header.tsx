@@ -36,7 +36,7 @@ const Header: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex-shrink-0">
             <img
-              src="/images/gorewayPharmacyLogo.png"
+              src={`${import.meta.env.BASE_URL}images/gorewayPharmacyLogo.png`}
               alt="Goreway Medical Pharmacy"
               className="h-12 w-auto transition-transform duration-200 hover:scale-105"
               width="266"
