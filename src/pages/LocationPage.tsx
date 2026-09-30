@@ -2,13 +2,24 @@ import React from 'react';
 import { MapPin, Clock, Phone, Calendar, ExternalLink } from 'lucide-react';
 
 const LocationPage: React.FC = () => {
-    const isMaltonDomain = window.location.hostname.replace(/^www\./, '') === 'maltonpharmacy.ca';
-    const pharmacyAddress = isMaltonDomain ? '6870 Goreway Dr' : '7330 Goreway Dr';
-    const pharmacyPostal = isMaltonDomain ? 'L4V 1P1' : 'L4T 4J2';
-    const pharmacyPhone = isMaltonDomain ? '+1 (905) 678-6870' : '+1 (905) 671-3784';
-    const pharmacyPhoneCompact = isMaltonDomain ? '+19056786870' : '+19056713784';
+  const isMaltonDomain = window.location.hostname.replace(/^www\./, '') === 'maltonpharmacy.ca';
+  const pharmacyAddress = isMaltonDomain ? '6870 Goreway Dr' : '7330 Goreway Dr';
+  const pharmacyPostal = isMaltonDomain ? 'L4V 1P1' : 'L4T 4J2';
+  const pharmacyPhone = isMaltonDomain ? '+1 (905) 678-6870' : '+1 (905) 671-3784';
+  const pharmacyPhoneCompact = isMaltonDomain ? '+19056786870' : '+19056713784';
+  const pharmacyMapLink = isMaltonDomain ? 'https://maps.app.goo.gl/LLk9hmoM38muKtzYA' : 'https://maps.app.goo.gl/Ru8ESUU62a1vQzrj6';
+  const currentYear = new Date().getFullYear();
 
-  const regularHours = [
+  const regularHoursMalton = [
+    { day: 'Sunday', hours: 'Closed' },
+    { day: 'Monday', hours: '9:00 AM - 8:00 PM' },
+    { day: 'Tuesday', hours: '9:00 AM - 8:00 PM' },
+    { day: 'Wednesday', hours: '9:00 AM - 8:00 PM' },
+    { day: 'Thursday', hours: '9:00 AM - 8:00 PM' },
+    { day: 'Friday', hours: '9:00 AM - 6:00 PM' },
+    { day: 'Saturday', hours: '9:00 AM - 2:00 PM' },
+  ];
+  const regularHoursGoreway = [
     { day: 'Sunday', hours: '10:00 AM - 2:00 PM' },
     { day: 'Monday', hours: '9:30 AM - 7:00 PM' },
     { day: 'Tuesday', hours: '9:30 AM - 7:00 PM' },
@@ -17,6 +28,7 @@ const LocationPage: React.FC = () => {
     { day: 'Friday', hours: '9:30 AM - 7:00 PM' },
     { day: 'Saturday', hours: '9:00 AM - 3:00 PM' },
   ];
+  const regularHours = isMaltonDomain ? regularHoursMalton : regularHoursGoreway;
 
   const holidayHours = [
     { holiday: 'New Year', date: 'Wednesday, January 1, 2025', hours: '10:00 AM - 3:00 PM' },
@@ -41,7 +53,7 @@ const LocationPage: React.FC = () => {
           <div className="text-center">
             <h1 className="text-4xl lg:text-5xl font-bold mb-6">Location & Hours</h1>
             <p className="text-xl opacity-90 max-w-3xl mx-auto">
-              Conveniently located in Mississauga with extended hours to serve you better. 
+              Conveniently located in Mississauga with extended hours to serve you better.
               Find us easily with our detailed location information and current operating hours.
             </p>
           </div>
@@ -61,16 +73,16 @@ const LocationPage: React.FC = () => {
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900 mb-2">Our Address</h2>
                   <div className="text-gray-600 space-y-1">
-                    <p className="text-lg font-medium">{pharmacyAddress}</p>
+                    <p className="text-lg font-medium"><a href={pharmacyMapLink}>{pharmacyAddress}</a></p>
                     <p>Mississauga, ON {pharmacyPostal}</p>
                     <p>Canada</p>
                   </div>
                 </div>
               </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="https://maps.app.goo.gl/Ru8ESUU62a1vQzrj6"
+                  href={pharmacyMapLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:from-orange-600 hover:to-orange-700 hover:shadow-lg transform hover:-translate-y-1 flex items-center justify-center space-x-2"
@@ -111,7 +123,7 @@ const LocationPage: React.FC = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Regular Hours</h3>
               </div>
-              
+
               <div className="space-y-3">
                 {regularHours.map((schedule, index) => (
                   <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0">
@@ -133,13 +145,13 @@ const LocationPage: React.FC = () => {
                 </p>
               </div>
               <div className="relative">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2883.550600586127!2d-79.6434306877561!3d43.71988757097855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b3bf2b9d3232b%3A0x5ddc3f77687e2178!2sGoreway%20Medical%20Pharmacy!5e0!3m2!1sen!2s!4v1753828453040!5m2!1sen!2s" 
-                  width="100%" 
-                  height="450" 
-                  style={{border:0}} 
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2883.550600586127!2d-79.6434306877561!3d43.71988757097855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b3bf2b9d3232b%3A0x5ddc3f77687e2178!2sGoreway%20Medical%20Pharmacy!5e0!3m2!1sen!2s!4v1753828453040!5m2!1sen!2s"
+                  width="100%"
+                  height="450"
+                  style={{ border: 0 }}
                   allowFullScreen={true}
-                  loading="lazy" 
+                  loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="w-full"
                 ></iframe>
@@ -156,11 +168,11 @@ const LocationPage: React.FC = () => {
                 <Calendar className="h-8 w-8 text-red-600" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-2">Holiday Hours 2025</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">Holiday Hours {currentYear}</h2>
                 <p className="text-gray-600">Special operating hours during statutory holidays</p>
               </div>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {holidayHours.map((holiday, index) => (
                 <div key={index} className="bg-gray-50 rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
@@ -170,7 +182,7 @@ const LocationPage: React.FC = () => {
                 </div>
               ))}
             </div>
-            
+
             <div className="mt-8 p-6 bg-blue-50 rounded-lg border-l-4 border-blue-500">
               <p className="text-blue-800">
                 <strong>Please note:</strong> Holiday hours are subject to change. We recommend calling ahead to confirm our hours during holiday periods.

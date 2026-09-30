@@ -10,6 +10,8 @@ const Header: React.FC = () => {
   const pharmacyName = isMaltonDomain ? 'Malton Pharmacy' : 'Goreway Medical Pharmacy';
   const pharmacyAddress = isMaltonDomain ? '6870 Goreway Dr, Mississauga, ON' : '7330 Goreway Dr, Mississauga, ON';
   const pharmacyPhone = isMaltonDomain ? '+1 (905) 678-6870' : '+1 (905) 671-3784';
+  const pharmacyPhoneCompact = isMaltonDomain ? '+19056786870' : '+19056713784';
+  const pharmacyMapLink = isMaltonDomain ? 'https://maps.app.goo.gl/LLk9hmoM38muKtzYA' : 'https://maps.app.goo.gl/Ru8ESUU62a1vQzrj6';
   console.log('Is this malton site? ', isMaltonDomain);
 
   const navigation = [
@@ -27,12 +29,12 @@ const Header: React.FC = () => {
         <div className="container mx-auto px-4 flex justify-center items-center space-x-6 text-sm">
           <div className="flex items-center space-x-2">
             <Phone className="h-4 w-4" />
-            <span className="font-medium">{pharmacyPhone}</span>
+            <a className="font-medium" href={`tel:${pharmacyPhoneCompact}`}>{pharmacyPhone}</a>
           </div>
-          <div className="hidden sm:flex items-center space-x-2">
+          <address className="hidden sm:flex items-center space-x-2">
             <MapPin className="h-4 w-4" />
-            <span>{pharmacyAddress}</span>
-          </div>
+            <a href={pharmacyMapLink}>{pharmacyAddress}</a>
+          </address>
         </div>
       </div>
 
@@ -56,20 +58,18 @@ const Header: React.FC = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`text-gray-700 hover:text-orange-500 font-medium transition-colors duration-200 relative ${
-                  isActive(item.href) 
-                    ? 'text-orange-500 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-orange-500' 
+                className={`text-gray-700 hover:text-orange-500 font-medium transition-colors duration-200 relative ${isActive(item.href)
+                    ? 'text-orange-500 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-orange-500'
                     : ''
-                }`}
+                  }`}
               >
                 {item.name}
               </Link>
             ))}
             <Link
               to="/pickup-form"
-              className={`bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-200 hover:from-orange-600 hover:to-orange-700 hover:shadow-lg transform hover:-translate-y-0.5 ${
-                isActive('/pickup-form') ? 'shadow-lg' : ''
-              }`}
+              className={`bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-200 hover:from-orange-600 hover:to-orange-700 hover:shadow-lg transform hover:-translate-y-0.5 ${isActive('/pickup-form') ? 'shadow-lg' : ''
+                }`}
             >
               Medication Pickup
             </Link>
@@ -98,9 +98,8 @@ const Header: React.FC = () => {
                   key={item.name}
                   to={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`text-gray-700 hover:text-orange-500 font-medium transition-colors duration-200 py-2 ${
-                    isActive(item.href) ? 'text-orange-500' : ''
-                  }`}
+                  className={`text-gray-700 hover:text-orange-500 font-medium transition-colors duration-200 py-2 ${isActive(item.href) ? 'text-orange-500' : ''
+                    }`}
                 >
                   {item.name}
                 </Link>
@@ -108,9 +107,8 @@ const Header: React.FC = () => {
               <Link
                 to="/pickup-form"
                 onClick={() => setIsMenuOpen(false)}
-                className={`bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:from-orange-600 hover:to-orange-700 text-center ${
-                  isActive('/pickup-form') ? 'shadow-lg' : ''
-                }`}
+                className={`bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:from-orange-600 hover:to-orange-700 text-center ${isActive('/pickup-form') ? 'shadow-lg' : ''
+                  }`}
               >
                 Medication Pickup
               </Link>
