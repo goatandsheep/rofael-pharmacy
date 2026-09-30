@@ -10,21 +10,14 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   const regularHoursMalton = [
-    { day: 'Sunday', hours: 'Closed' },
-    { day: 'Monday', hours: '9:00 AM - 8:00 PM' },
-    { day: 'Tuesday', hours: '9:00 AM - 8:00 PM' },
-    { day: 'Wednesday', hours: '9:00 AM - 8:00 PM' },
-    { day: 'Thursday', hours: '9:00 AM - 8:00 PM' },
+    { day: 'Sunday & Holidays', hours: 'Closed' },
+    { day: 'Monday - Thursday', hours: '9:00 AM - 8:00 PM' },
     { day: 'Friday', hours: '9:00 AM - 6:00 PM' },
     { day: 'Saturday', hours: '9:00 AM - 2:00 PM' },
   ];
   const regularHoursGoreway = [
-    { day: 'Sunday', hours: '10:00 AM - 2:00 PM' },
-    { day: 'Monday', hours: '9:30 AM - 7:00 PM' },
-    { day: 'Tuesday', hours: '9:30 AM - 7:00 PM' },
-    { day: 'Wednesday', hours: '9:30 AM - 7:00 PM' },
-    { day: 'Thursday', hours: '9:30 AM - 7:00 PM' },
-    { day: 'Friday', hours: '9:30 AM - 7:00 PM' },
+    { day: 'Sunday & Holidays', hours: '10:00 AM - 2:00 PM' },
+    { day: 'Monday - Friday', hours: '9:30 AM - 7:00 PM' },
     { day: 'Saturday', hours: '9:00 AM - 3:00 PM' },
   ];
   const regularHours = isMaltonDomain ? regularHoursMalton : regularHoursGoreway;
@@ -67,9 +60,9 @@ const Footer: React.FC = () => {
             <div className="space-y-2 text-sm">
 
               {regularHours.map((schedule, index) => (
-                <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0">
-                  <span className="font-medium text-gray-900">{schedule.day}</span>
-                  <span className="text-gray-600">{schedule.hours}</span>
+                <div key={index} className="flex justify-between">
+                  <span className="text-gray-300">{schedule.day}</span>
+                  <span>{schedule.hours}</span>
                 </div>
               ))}
             </div>
