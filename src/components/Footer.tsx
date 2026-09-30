@@ -2,7 +2,33 @@ import React from 'react';
 import { Phone, MapPin, Clock, Heart } from 'lucide-react';
 
 const Footer: React.FC = () => {
+  const isMaltonDomain = window.location.hostname.replace(/^www\./, '') === 'maltonpharmacy.ca';
+  const pharmacyAddress = isMaltonDomain ? '6870 Goreway Dr' : '7330 Goreway Dr';
+  const pharmacyPostal = isMaltonDomain ? 'L4V 1P1' : 'L4T 4J2';
+  const pharmacyPhone = isMaltonDomain ? '+1 (905) 678-6870' : '+1 (905) 671-3784';
+  const pharmacyPhoneCompact = isMaltonDomain ? '+19056786870' : '+19056713784';
   const currentYear = new Date().getFullYear();
+
+  const regularHoursMalton = [
+    { day: 'Sunday', hours: 'Closed' },
+    { day: 'Monday', hours: '9:00 AM - 8:00 PM' },
+    { day: 'Tuesday', hours: '9:00 AM - 8:00 PM' },
+    { day: 'Wednesday', hours: '9:00 AM - 8:00 PM' },
+    { day: 'Thursday', hours: '9:00 AM - 8:00 PM' },
+    { day: 'Friday', hours: '9:00 AM - 6:00 PM' },
+    { day: 'Saturday', hours: '9:00 AM - 2:00 PM' },
+  ];
+  const regularHoursGoreway = [
+    { day: 'Sunday', hours: '10:00 AM - 2:00 PM' },
+    { day: 'Monday', hours: '9:30 AM - 7:00 PM' },
+    { day: 'Tuesday', hours: '9:30 AM - 7:00 PM' },
+    { day: 'Wednesday', hours: '9:30 AM - 7:00 PM' },
+    { day: 'Thursday', hours: '9:30 AM - 7:00 PM' },
+    { day: 'Friday', hours: '9:30 AM - 7:00 PM' },
+    { day: 'Saturday', hours: '9:00 AM - 3:00 PM' },
+  ];
+  const regularHours = isMaltonDomain ? regularHoursMalton : regularHoursGoreway;
+
 
   return (
     <footer className="bg-gray-900 text-white">
@@ -17,8 +43,8 @@ const Footer: React.FC = () => {
                 <div>
                   <p className="font-medium">Address</p>
                   <p className="text-gray-300 text-sm">
-                    7330 Goreway Dr<br />
-                    Mississauga, ON L4T 4J2<br />
+                    {pharmacyAddress}<br />
+                    Mississauga, ON {pharmacyPostal}<br />
                     Canada
                   </p>
                 </div>
@@ -27,8 +53,8 @@ const Footer: React.FC = () => {
                 <Phone className="h-5 w-5 text-orange-400" />
                 <div>
                   <p className="font-medium">Phone</p>
-                  <a href="tel:+19056713784" className="text-gray-300 hover:text-orange-400 transition-colors duration-200">
-                    +1 (905) 671-3784
+                  <a href={`tel:${pharmacyPhoneCompact}`} className="text-gray-300 hover:text-orange-400 transition-colors duration-200">
+                    {pharmacyPhone}
                   </a>
                 </div>
               </div>
@@ -39,18 +65,13 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-xl font-bold mb-6 text-orange-400">Hours of Operation</h3>
             <div className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span className="text-gray-300">Sunday</span>
-                <span>10:00 AM - 2:00 PM</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-300">Monday - Friday</span>
-                <span>9:30 AM - 7:00 PM</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-300">Saturday</span>
-                <span>9:00 AM - 3:00 PM</span>
-              </div>
+
+              {regularHours.map((schedule, index) => (
+                <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0">
+                  <span className="font-medium text-gray-900">{schedule.day}</span>
+                  <span className="text-gray-600">{schedule.hours}</span>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -82,9 +103,9 @@ const Footer: React.FC = () => {
               <span>Website designed with</span>
               <Heart className="h-4 w-4 text-red-500" />
               <span>by</span>
-              <a 
-                href="https://clockout.ca" 
-                target="_blank" 
+              <a
+                href="https://clockout.ca"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-orange-400 hover:text-orange-300 transition-colors duration-200 font-medium"
               >
@@ -94,8 +115,8 @@ const Footer: React.FC = () => {
           </div>
           <p className="text-xs text-gray-500">
             chat bot icon by{' '}
-            <a 
-              target="_blank" 
+            <a
+              target="_blank"
               href="https://icons8.com"
               className="text-orange-400 hover:text-orange-300 transition-colors duration-200"
             >
