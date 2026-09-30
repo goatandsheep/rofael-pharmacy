@@ -80,8 +80,9 @@ const HomePage: React.FC = () => {
 
             <div className="relative">
               <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                {/* https://images.pexels.com/photos/5207116/pexels-photo-5207116.jpeg */}
                 <img
-                  src="https://images.pexels.com/photos/5207116/pexels-photo-5207116.jpeg"
+                  src={`${import.meta.env.BASE_URL}images/goreway-staff.jpg`}
                   alt="Professional pharmacy interior with modern design"
                   className="w-full h-96 lg:h-[500px] object-cover"
                 />
